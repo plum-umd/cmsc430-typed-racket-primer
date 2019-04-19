@@ -246,6 +246,24 @@
   (test-equal? "mult_2" (plus '(S Z) 'Z) 'Z)
   (test-equal? "mult_3" (plus '(S Z) '(S Z)) '(S Z)))
 
+(: iter (∀ (α) (N (α -> α) -> (α -> α))))
+(define (iter n f) (λ ([a : α]) a))
+
+(module+ test
+  (: succ (Natural -> Natural))
+  (define (succ n) (+ n 1))
+
+  (test-equal? "iter_0" ((iter 'Z succ) 0) 0)
+  (test-equal? "iter_1" ((iter '(S Z) succ) 0) 1)
+  (test-equal? "iter_2" ((iter '(S (S Z)) succ) 0) 2)
+
+  (: neg (Boolean -> Boolean))
+  (define (neg b) (not b))
+
+  (test-equal? "iter_3" ((iter 'Z neg) #true) #true)
+  (test-equal? "iter_4" ((iter '(S Z) neg) #true) #false)
+  (test-equal? "iter_5" ((iter '(S (S Z)) neg) #true) #true))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Binary trees of numbers
@@ -334,6 +352,7 @@
 ;; TODO
 
 ;; - vectors
+;; - Graphs
 ;; - Hashtable (ADT)
 
 
