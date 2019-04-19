@@ -1,6 +1,5 @@
 language: racket
-sudo: required
-dist: trusty
+sudo: false
 env:
   global:
     - RACKET_DIR=~/racket
@@ -17,4 +16,4 @@ install:
 before_script: 
 
 script:
-
+  - raco test --timeout 360 --drdr .
