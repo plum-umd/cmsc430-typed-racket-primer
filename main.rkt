@@ -1,9 +1,19 @@
 #lang typed/racket
 (provide (all-defined-out))
 
-;; Read
+;; Read (as needed)
 ;; - https://docs.racket-lang.org/ts-guide
 ;; - https://docs.racket-lang.org/ts-reference/
+
+;; These are a series of finger-exercise programs to help you:
+;; - learn a bit of Typed Racket
+;; - practice with structural recursion and type-based program design
+
+;; This style of programming will be used throughout the course,
+;; now is the time to master the style!
+
+;; If you've mastered the style, you can write these programs on auto-pilot.
+;; If you haven't, you will struggle.
 
 (module+ test
   (require typed/rackunit))
@@ -11,7 +21,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Numeric functions
 
-(: fact (Nonnegative-Integer -> Nonnegative-Integer))
+;; Follow this template for functions on natural numbers.
+#;(: nat-template (Natural ... -> ...))
+#;(define (nat-template n)
+    (match n
+      [0 ...]
+      [n (... (nat-template (sub1 n) ...) ...)]))
+
+(: fact (Natural -> Natural))
 ;; Compute n!
 (define (fact n) 0)
 
@@ -22,7 +39,7 @@
   (test-equal? "fact_2" (fact 2) 2)
   (test-equal? "fact_3" (fact 5) 120))
 
-(: fib (Nonnegative-Integer -> Nonnegative-Integer))
+(: fib (Natural -> Natural))
 ;; Compute nth Fibonnaci number
 (define (fib n) 0)
 
@@ -39,6 +56,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; String functions
+
+;; Read up on string functions in Racket to implement these.
 
 (: longer (String String -> String))
 ;; Select the longer of the two strings (or first if same length)
@@ -72,6 +91,13 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Simple list functions
+
+;; Follow this template for functions on lists of numbers where appropriate.
+#;(: lon-template ([Listof Number] ... -> ...))
+#;(define (lon-template ls ...)
+    (match ls
+      ['() ...]
+      [(cons n ls) (... n (lon-template ls ...) ...)]))
 
 (: length-lon ([Listof Number] -> Natural))
 ;; Compute the length of given list of numbers
@@ -173,6 +199,145 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Peano numbers
+
+;; Unary encoding of the natural numbers
+(define-type N (U 'Z (List 'S N)))
+
+(: nat->peano (Natural -> N))
+;; Convert natural to Peano
+(define (nat->peano n) 'Z)
+
+(module+ test
+  (test-equal? "nat->peano_0" (nat->peano 0) 'Z)
+  (test-equal? "nat->peano_1" (nat->peano 1) '(S Z))
+  (test-equal? "nat->peano_2" (nat->peano 2) '(S (S 2)))
+  (test-equal? "nat->peano_3" (nat->peano 3) '(S (S (S Z)))))
+
+(: peano->nat (N -> Natural))
+;; Convert Peano to natural
+(define (peano->nat n) 0)
+
+(module+ test
+  (test-equal? "peano->nat_0" (peano->nat 'Z) 0)
+  (test-equal? "peano->nat_1" (peano->nat '(S Z)) 1)
+  (test-equal? "peano->nat_2" (peano->nat '(S (S Z))) 2)
+  (test-equal? "peano->nat_3" (peano->nat '(S (S (S Z)))) 3))
+
+;; Do not use conversions to implement the following functions
+
+(: plus (N N -> N))
+;; Add two Peano numbers together
+(define (plus n1 n2) 'Z)
+
+(module+ test
+  (test-equal? "plus_0" (plus 'Z 'Z) 'Z)
+  (test-equal? "plus_1" (plus 'Z '(S Z)) '(S Z))
+  (test-equal? "plus_2" (plus '(S Z) 'Z) '(S Z))
+  (test-equal? "plus_3" (plus '(S Z) '(S Z)) '(S (S Z))))
+
+(: mult (N N -> N))
+;; Multiply two Peano numbers together
+(define (mult n1 n2) 'Z)
+
+(module+ test
+  (test-equal? "mult_0" (plus 'Z 'Z) 'Z)
+  (test-equal? "mult_1" (plus 'Z '(S Z)) 'Z)
+  (test-equal? "mult_2" (plus '(S Z) 'Z) 'Z)
+  (test-equal? "mult_3" (plus '(S Z) '(S Z)) '(S Z)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Binary trees of numbers
+
+;; Write test cases for each function (before writing code!).
+
+(define-type BTNumber
+  (U 'leaf
+     (List Number BTNumber BTNumber)))
+
+(: btn-height (BTNumber -> Natural))
+;; Compute the height of a binary tree (leaf has height 0)
+(define (btn-height bt) 0)
+
+(module+ test
+  (test-equal? "btn-height_0" (btn-height 'leaf) 0)
+  (test-equal? "btn-height_1" (btn-height '(5 leaf leaf)) 1)
+  (test-equal? "btn-height_2" (btn-height '(5 (1 leaf leaf) leaf)) 2))
+
+(: btn-count (BTNumber -> Natural))
+;; Count the numbers of a binary tree
+(define (btn-count bt) 0)
+
+(: btn-mirror (BTNumber -> BTNumber))
+;; Compute the mirror image of binary tree
+(define (btn-mirror bt) bt)
+
+(: btn-sum (BTNumber -> Number))
+;; Sum the numbers of a binary tree
+(define (btn-sum bt) 0)
+
+(: btn-gen-full (Natural Number -> BTNumber))
+;; Generate a full bt of height h containing given number n at each node
+(define (btn-gen-full h n) 'leaf)
+
+;; A BSTNumber is a BTNumber with the binary search tree property
+(define-type BSTNumber BTNumber)
+
+(: btn-bstn? (BTNumber -> Boolean))
+;; Does the bt have the binary search tree property?
+(define (btn-bstn? bt) #false)
+
+(: bstn-contains? (BSTNumber Number -> Boolean))
+;; Does bst contain given number?
+(define (bstn-contains? bst n) #false)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Binary trees (parametric)
+
+;; Write test cases for each function (before writing code!).
+;; Write type signatures.
+
+(define-type [BT α]
+  (U 'leaf
+     (List Number [BT α] [BT α])))
+
+;; Compute the height of a binary tree (leaf has height 0)
+(define (bt-height bt) 0)
+
+;; Count the numbers of a binary tree
+(define (bt-count bt) 0)
+
+;; Compute the mirror image of binary tree
+(define (bt-mirror bt) bt)
+
+;; Generate a full bt of height h containing given number n at each node
+(define (bt-gen-full h n) 'leaf)
+
+;; A [BST α] is a [BT α] with the binary search tree property (according to some order)
+(define-type [BST α] [BT α])
+
+(define-type [Comparator α] (α α -> Boolean))
+(define-type [Equal α] (α α -> Boolean))
+
+;; Does the bt have the binary search tree property using given order?
+(define (bt-bst? bt <) #false)
+
+;; Does bst contain given element equal with a?
+;; ASSUME: bst has bst property wrt < and = is consistent with <.
+(define (bst-contains? bst a < =) #false)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TODO
+
+;; - vectors
+;; - Hashtable (ADT)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Understanding
 #|
 
@@ -180,10 +345,15 @@
    constructors:
    - Listof
    - List
+   - Boolean
+   - #true
    - Pairof
    - Real
    - Natural
    - Number
+   - Symbol
+   - 'leaf
+   - U
    - ->
 
    Subtyping: which of these are subtypes:
