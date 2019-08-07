@@ -16,4 +16,4 @@ install:
 before_script: 
 
 script:
-  - raco test --timeout 360 --drdr .
+  - raco test --timeout 360 .
