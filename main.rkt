@@ -175,6 +175,7 @@
 
 (: sort-asc ([Listof Real] -> [Listof Real]))
 ;; Sort list into ascending order
+;; HINT: do insertion sort by writing and using the helper below
 (define (sort-asc xs) 
   ;; TODO
   xs)
@@ -185,6 +186,18 @@
   (check-equal? (sort-asc '(1 2)) '(1 2))
   (check-equal? (sort-asc '(2 1)) '(1 2))
   (check-equal? (sort-asc '(2 3 1)) '(1 2 3)))
+
+(: insert-asc (Real [Listof Real] -> [Listof Real]))
+;; Insert number into sorted list
+;; ASSUME: given list is sorted in ascending order
+(define (insert-asc n xs)
+  ;; TODO
+  xs)
+
+(module+ test
+  (check-equal? (insert-asc 5 '()) '(5))
+  (check-equal? (insert-asc 5 '(7)) '(5 7))
+  (check-equal? (insert-asc 5 '(3)) '(3 5)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
