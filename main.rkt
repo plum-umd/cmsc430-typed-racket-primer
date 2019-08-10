@@ -1,6 +1,17 @@
 #lang typed/racket
 (provide (all-defined-out))
 
+;; This assignment should be completed individually.
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; I pledge on my honor that I have not given or received any
+;; unauthorized assistance on this assignment.
+;; Name: TODO
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
 ;; Read (as needed)
 ;; - https://docs.racket-lang.org/ts-guide
 ;; - https://docs.racket-lang.org/ts-reference/
@@ -18,40 +29,37 @@
 (module+ test
   (require typed/rackunit))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Numeric functions
 
-;; Follow this template for functions on natural numbers.
-#;(: nat-template (Natural ... -> ...))
-#;(define (nat-template n)
-    (match n
-      [0 ...]
-      [n (... (nat-template (sub1 n) ...) ...)]))
-
 (: fact (Natural -> Natural))
 ;; Compute n!
-(define (fact n) 0)
+(define (fact n)
+  ;; TODO
+  0)
 
 (module+ test
-  (require typed/rackunit)
-  (test-equal? "fact_0" (fact 0) 1)
-  (test-equal? "fact_1" (fact 1) 1)
-  (test-equal? "fact_2" (fact 2) 2)
-  (test-equal? "fact_3" (fact 5) 120))
+  (check-equal? (fact 0) 1)
+  (check-equal? (fact 1) 1)
+  (check-equal? (fact 2) 2)
+  (check-equal? (fact 5) 120))
 
 (: fib (Natural -> Natural))
 ;; Compute nth Fibonnaci number
-(define (fib n) 0)
+(define (fib n) 
+  ;; TODO
+  0)
 
 (module+ test
-  (test-equal? "fib_0" (fib 0) 0)
-  (test-equal? "fib_1" (fib 1) 1)
-  (test-equal? "fib_2" (fib 2) 1)
-  (test-equal? "fib_3" (fib 3) 2)
-  (test-equal? "fib_4" (fib 4) 3)
-  (test-equal? "fib_5" (fib 5) 5)
-  (test-equal? "fib_6" (fib 6) 8)
-  (test-equal? "fib_7" (fib 20) 6765))
+  (check-equal? (fib 0) 0)
+  (check-equal? (fib 1) 1)
+  (check-equal? (fib 2) 1)
+  (check-equal? (fib 3) 2)
+  (check-equal? (fib 4) 3)
+  (check-equal? (fib 5) 5)
+  (check-equal? (fib 6) 8)
+  (check-equal? (fib 20) 6765))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -61,32 +69,38 @@
 
 (: longer (String String -> String))
 ;; Select the longer of the two strings (or first if same length)
-(define (longer s1 s2) s1)
+(define (longer s1 s2)
+  ;; TODO
+  s1)
 
 (module+ test
-  (test-equal? "longer_0" (longer "" "") "")
-  (test-equal? "longer_1" (longer "abc" "d") "abc")
-  (test-equal? "longer_2" (longer "a" "bcd") "bcd")
-  (test-equal? "longer_3" (longer "ab" "cd") "ab"))
+  (check-equal? (longer "" "") "")
+  (check-equal? (longer "abc" "d") "abc")
+  (check-equal? (longer "a" "bcd") "bcd")
+  (check-equal? (longer "ab" "cd") "ab"))
 
 (: explode (String -> [Listof String]))
 ;; Explode a string into a list of length-1 strings
-(define (explode s) '())
+(define (explode s) 
+  ;; TODO
+  '())
 
 (module+ test
-  (test-equal? "explode_0" (explode "") '())
-  (test-equal? "explode_1" (explode "a") '("a"))
-  (test-equal? "explode_1" (explode "abc") '("a" "b" "c")))
+  (check-equal? (explode "") '())
+  (check-equal? (explode "a") '("a"))
+  (check-equal? (explode "abc") '("a" "b" "c")))
 
 (: bigrams (String -> [Listof [List String String]]))
 ;; Compute list of bigrams (pairs of adjacent letters) in a string
-(define (bigrams s) '())
+(define (bigrams s) 
+  ;; TODO
+  '())
 
 (module+ test
-  (test-equal? "bigrams_0" (bigrams "") '())
-  (test-equal? "bigrams_1" (bigrams "a") '())
-  (test-equal? "bigrams_1" (bigrams "ab") '(("a" "b")))
-  (test-equal? "bigrams_1" (bigrams "abc") '(("a" "b") ("b" "c"))))
+  (check-equal? (bigrams "") '())
+  (check-equal? (bigrams "a") '())
+  (check-equal? (bigrams "ab") '(("a" "b")))
+  (check-equal? (bigrams "abc") '(("a" "b") ("b" "c"))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -101,64 +115,76 @@
 
 (: length-lon ([Listof Number] -> Natural))
 ;; Compute the length of given list of numbers
-(define (length-lon ls) 0)
+(define (length-lon ls) 
+  ;; TODO
+  0)
 
 (module+ test
-  (test-equal? "length-lon_0" (length-lon '()) 0)
-  (test-equal? "length-lon_1" (length-lon '(1)) 1)
-  (test-equal? "length-lon_2" (length-lon '(2)) 1)
-  (test-equal? "length-lon_3" (length-lon '(1 2)) 2))
+  (check-equal? (length-lon '()) 0)
+  (check-equal? (length-lon '(1)) 1)
+  (check-equal? (length-lon '(2)) 1)
+  (check-equal? (length-lon '(1 2)) 2))
 
 (: sum ([Listof Number] -> Number))
 ;; Compute the sum of given list of numbers
-(define (sum ls) 0)
+(define (sum ls) 
+  ;; TODO
+  0)
 
 (module+ test
-  (test-equal? "sum_0" (sum '()) 0)
-  (test-equal? "sum_1" (sum '(1)) 1)
-  (test-equal? "sum_2" (sum '(2)) 2)
-  (test-equal? "sum_3" (sum '(1 2)) 3))
+  (check-equal? (sum '()) 0)
+  (check-equal? (sum '(1)) 1)
+  (check-equal? (sum '(2)) 2)
+  (check-equal? (sum '(1 2)) 3))
 
 (: zip-add ([Listof Number] [Listof Number] -> [Listof Number]))
 ;; Compute the pairwise sum of given list of numbers
 ;; ASSUME: lists have equal length
-(define (zip-add ls1 ls2) (list 0))
+(define (zip-add ls1 ls2) 
+  ;; TODO
+  '())
 
 (module+ test
-  (test-equal? "zip-add_0" (zip-add '() '()) 0)
-  (test-equal? "zip-add_1" (zip-add '(1) '(2)) '(3))
-  (test-equal? "zip-add_2" (zip-add '(1 3) '(2 4)) '(3 7)))
+  (check-equal? (zip-add '() '()) '())
+  (check-equal? (zip-add '(1) '(2)) '(3))
+  (check-equal? (zip-add '(1 3) '(2 4)) '(3 7)))
 
 (: zip-lon ([Listof Number] [Listof Number] -> [Listof [List Number Number]]))
 ;; Compute the pairwise list of given list of numbers
 ;; ASSUME: lists have equal length
-(define (zip-lon ls1 ls2) (list (list 0 0)))
+(define (zip-lon ls1 ls2) 
+  ;; TODO
+  '())
 
 (module+ test
-  (test-equal? "zip-lon_0" (zip-lon '() '()) '())
-  (test-equal? "zip-lon_1" (zip-lon '(1) '(2)) '((1 2)))
-  (test-equal? "zip-lon_2" (zip-lon '(1 3) '(2 4)) '((1 2) (3 4))))
+  (check-equal? (zip-lon '() '()) '())
+  (check-equal? (zip-lon '(1) '(2)) '((1 2)))
+  (check-equal? (zip-lon '(1 3) '(2 4)) '((1 2) (3 4))))
 
 (: max-lon ([Pairof Real [Listof Real]] -> Real))
 ;; Compute max element of non-empty list of numbers
-(define (max-lon xs) (first xs))
+(define (max-lon xs) 
+  ;; TODO
+  0)
   
 (module+ test
-  (test-equal? "max-lon_0" (max-lon '(1)) 1)
-  (test-equal? "max-lon_1" (max-lon '(1 2)) '(2))
-  (test-equal? "max-lon_2" (max-lon '(2 1)) '(2))
-  (test-equal? "max-lon_3" (max-lon '(2 3 1)) '(3)))
+  (check-equal? (max-lon '(1)) 1)
+  (check-equal? (max-lon '(1 2)) '(2))
+  (check-equal? (max-lon '(2 1)) '(2))
+  (check-equal? (max-lon '(2 3 1)) '(3)))
 
 (: sort-asc ([Listof Real] -> [Listof Real]))
 ;; Sort list into ascending order
-(define (sort-asc xs) xs)
+(define (sort-asc xs) 
+  ;; TODO
+  xs)
 
 (module+ test
-  (test-equal? "sort-asc_0" (sort-asc '()) '())
-  (test-equal? "sort-asc_1" (sort-asc '(1)) '(1))
-  (test-equal? "sort-asc_2" (sort-asc '(1 2)) '(1 2))
-  (test-equal? "sort-asc_3" (sort-asc '(2 1)) '(1 2))
-  (test-equal? "sort-asc_4" (sort-asc '(2 3 1)) '(1 2 3)))
+  (check-equal? (sort-asc '()) '())
+  (check-equal? (sort-asc '(1)) '(1))
+  (check-equal? (sort-asc '(1 2)) '(1 2))
+  (check-equal? (sort-asc '(2 1)) '(1 2))
+  (check-equal? (sort-asc '(2 3 1)) '(1 2 3)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -169,9 +195,9 @@
 (define (minimize f xs) (first xs))
 
 (module+ test
-  (test-equal? "minimize_0" (minimize abs '(1 -2 3)) 1)
-  (test-equal? "minimize_1" (minimize string-length '("abc" "d" "efg")) "d")
-  (test-equal? "minimize_2" (minimize string-length '("abc" "d" "ef" "g")) "d"))
+  (check-equal? (minimize abs '(1 -2 3)) 1)
+  (check-equal? (minimize string-length '("abc" "d" "efg")) "d")
+  (check-equal? (minimize string-length '("abc" "d" "ef" "g")) "d"))
 
 (: sort (∀ (α) (α α -> Boolean) [Listof α] -> [Listof α]))
 ;; Sort list in ascending order according to given comparison
@@ -179,9 +205,9 @@
 (define (sort < xs) xs)
 
 (module+ test
-  (test-equal? "sort_0" (sort < '(1 -2 3)) '(-2 1 3))
-  (test-equal? "sort_1" (sort string<? '("abc" "d" "efg")) '("d" "abc" "efg"))  
-  (test-equal? "sort_2"
+  (check-equal? (sort < '(1 -2 3)) '(-2 1 3))
+  (check-equal? (sort string<? '("abc" "d" "efg")) '("d" "abc" "efg"))  
+  (check-equal? 
                (sort (λ ([s1 : String] [s2 : String])
                        (< (string-length s1) (string-length s2)))
                      '("efg" "d" "abc")) '("d" "efg" "abc")))
@@ -189,13 +215,22 @@
 (: zip (∀ (α β) ([Listof α] [Listof β] -> [Listof [List α β]])))
 ;; Zip together lists into a list of lists
 ;; ASSUME: lists are the same length
-(define (zip as bs) '())
+(define (zip as bs) 
+  ;; TODO
+  '())
 
 (module+ test
-  (test-equal? "zip_0" (zip '() '()) '())
-  (test-equal? "zip_1" (zip '(1) '(2)) '((1 2)))
-  (test-equal? "zip_2" (zip '(1 3) '(2 4)) '((1 2) (3 4)))
-  (test-equal? "zip_3" (zip '(1 3) '("a" "b")) '((1 "a") (3 "b"))))
+  (check-equal? (zip '() '()) '())
+  (check-equal? (zip '(1) '(2)) '((1 2)))
+  (check-equal? (zip '(1 3) '(2 4)) '((1 2) (3 4)))
+  (check-equal? (zip '(1 3) '("a" "b")) '((1 "a") (3 "b"))))
+
+(: pipe (∀ (α) (Listof (α -> α)) -> (α -> α)))
+;; Compose a list of functions into a single function
+;; ((pipe (list f1 f2 f3)) x) ≡ (f1 (f2 (f3 x)))
+(define (pipe fs)
+  ;; TODO
+  (λ ([x : α]) x))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -206,63 +241,73 @@
 
 (: nat->peano (Natural -> N))
 ;; Convert natural to Peano
-(define (nat->peano n) 'Z)
+(define (nat->peano n) 
+  ;; TODO
+  'Z)
 
 (module+ test
-  (test-equal? "nat->peano_0" (nat->peano 0) 'Z)
-  (test-equal? "nat->peano_1" (nat->peano 1) '(S Z))
-  (test-equal? "nat->peano_2" (nat->peano 2) '(S (S 2)))
-  (test-equal? "nat->peano_3" (nat->peano 3) '(S (S (S Z)))))
+  (check-equal? (nat->peano 0) 'Z)
+  (check-equal? (nat->peano 1) '(S Z))
+  (check-equal? (nat->peano 2) '(S (S 2)))
+  (check-equal? (nat->peano 3) '(S (S (S Z)))))
 
 (: peano->nat (N -> Natural))
 ;; Convert Peano to natural
-(define (peano->nat n) 0)
+(define (peano->nat n) 
+  ;; TODO
+  0)
 
 (module+ test
-  (test-equal? "peano->nat_0" (peano->nat 'Z) 0)
-  (test-equal? "peano->nat_1" (peano->nat '(S Z)) 1)
-  (test-equal? "peano->nat_2" (peano->nat '(S (S Z))) 2)
-  (test-equal? "peano->nat_3" (peano->nat '(S (S (S Z)))) 3))
+  (check-equal? (peano->nat 'Z) 0)
+  (check-equal? (peano->nat '(S Z)) 1)
+  (check-equal? (peano->nat '(S (S Z))) 2)
+  (check-equal? (peano->nat '(S (S (S Z)))) 3))
 
 ;; Do not use conversions to implement the following functions
 
 (: plus (N N -> N))
 ;; Add two Peano numbers together
-(define (plus n1 n2) 'Z)
+(define (plus n1 n2) 
+  ;; TODO
+  'Z)
 
 (module+ test
-  (test-equal? "plus_0" (plus 'Z 'Z) 'Z)
-  (test-equal? "plus_1" (plus 'Z '(S Z)) '(S Z))
-  (test-equal? "plus_2" (plus '(S Z) 'Z) '(S Z))
-  (test-equal? "plus_3" (plus '(S Z) '(S Z)) '(S (S Z))))
+  (check-equal? (plus 'Z 'Z) 'Z)
+  (check-equal? (plus 'Z '(S Z)) '(S Z))
+  (check-equal? (plus '(S Z) 'Z) '(S Z))
+  (check-equal? (plus '(S Z) '(S Z)) '(S (S Z))))
 
 (: mult (N N -> N))
 ;; Multiply two Peano numbers together
-(define (mult n1 n2) 'Z)
+(define (mult n1 n2) 
+  ;; TODO
+  'Z)
 
 (module+ test
-  (test-equal? "mult_0" (plus 'Z 'Z) 'Z)
-  (test-equal? "mult_1" (plus 'Z '(S Z)) 'Z)
-  (test-equal? "mult_2" (plus '(S Z) 'Z) 'Z)
-  (test-equal? "mult_3" (plus '(S Z) '(S Z)) '(S Z)))
+  (check-equal? (plus 'Z 'Z) 'Z)
+  (check-equal? (plus 'Z '(S Z)) 'Z)
+  (check-equal? (plus '(S Z) 'Z) 'Z)
+  (check-equal? (plus '(S Z) '(S Z)) '(S Z)))
 
 (: iter (∀ (α) (N (α -> α) -> (α -> α))))
-(define (iter n f) (λ ([a : α]) a))
+(define (iter n f) 
+  ;; TODO
+  (λ ([a : α]) a))
 
 (module+ test
   (: succ (Natural -> Natural))
   (define (succ n) (+ n 1))
 
-  (test-equal? "iter_0" ((iter 'Z succ) 0) 0)
-  (test-equal? "iter_1" ((iter '(S Z) succ) 0) 1)
-  (test-equal? "iter_2" ((iter '(S (S Z)) succ) 0) 2)
+  (check-equal? ((iter 'Z succ) 0) 0)
+  (check-equal? ((iter '(S Z) succ) 0) 1)
+  (check-equal? ((iter '(S (S Z)) succ) 0) 2)
 
   (: neg (Boolean -> Boolean))
   (define (neg b) (not b))
 
-  (test-equal? "iter_3" ((iter 'Z neg) #true) #true)
-  (test-equal? "iter_4" ((iter '(S Z) neg) #true) #false)
-  (test-equal? "iter_5" ((iter '(S (S Z)) neg) #true) #true))
+  (check-equal? ((iter 'Z neg) #t) #t)
+  (check-equal? ((iter '(S Z) neg) #t) #f)
+  (check-equal? ((iter '(S (S Z)) neg) #t) #t))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -271,118 +316,147 @@
 ;; Write test cases for each function (before writing code!).
 
 (define-type BTNumber
-  (U 'leaf
-     (List Number BTNumber BTNumber)))
+  (U 'Leaf
+     (List 'Node Number BTNumber BTNumber)))
+
+;; Follow this template for functions on binary trees.
+#;(: btn-template (bt ... -> ...))
+#;(define (btn-template n)
+    (match n
+      [`Leaf ...]
+      [`(Node ,n ,left ,right)
+        (... n
+             (btn-template left ...) 
+             (btn-template right ...) ...)]))
+
 
 (: btn-height (BTNumber -> Natural))
 ;; Compute the height of a binary tree (leaf has height 0)
-(define (btn-height bt) 0)
+(define (btn-height bt) 
+  ;; TODO
+  0)
 
 (module+ test
-  (test-equal? "btn-height_0" (btn-height 'leaf) 0)
-  (test-equal? "btn-height_1" (btn-height '(5 leaf leaf)) 1)
-  (test-equal? "btn-height_2" (btn-height '(5 (1 leaf leaf) leaf)) 2))
+  (check-equal? (btn-height `Leaf) 0)
+  (check-equal? (btn-height `(Node 5 Leaf Leaf)) 1)
+  (check-equal? (btn-height `(Node 5 (Node 1 Leaf Leaf) Leaf)) 2))
 
 (: btn-count (BTNumber -> Natural))
 ;; Count the numbers of a binary tree
-(define (btn-count bt) 0)
+(define (btn-count bt) 
+  ;; TODO
+  0)
+
+(module+ test
+  (check-equal? (btn-count `Leaf) 0)
+  (check-equal? (btn-count `(Node 5 Leaf Leaf)) 1)
+  (check-equal? (btn-count `(Node 5 (Node 1 Leaf Leaf) Leaf)) 1))
 
 (: btn-mirror (BTNumber -> BTNumber))
 ;; Compute the mirror image of binary tree
-(define (btn-mirror bt) bt)
+(define (btn-mirror bt)
+  ;; TODO
+  `Leaf)
+
+(module+ test
+  (check-equal? (btn-mirror `Leaf) `Leaf)
+  (check-equal? (btn-mirror `(Node 5 Leaf Leaf)) `(Node 5 Leaf Leaf))
+  (check-equal? (btn-mirror `(Node 5 (Node 1 Leaf Leaf) Leaf))
+                `(Node 5 Leaf (Node 1 Leaf Leaf))))
 
 (: btn-sum (BTNumber -> Number))
 ;; Sum the numbers of a binary tree
-(define (btn-sum bt) 0)
+(define (btn-sum bt)
+  ;; TODO
+  0)
+
+(module+ test
+  (check-equal? (btn-sum `Leaf) 0)
+  (check-equal? (btn-sum `(Node 5 Leaf Leaf)) 5)
+  (check-equal? (btn-sum `(Node 5 (Node 1 Leaf Leaf) Leaf)) 6))
 
 (: btn-gen-full (Natural Number -> BTNumber))
 ;; Generate a full bt of height h containing given number n at each node
-(define (btn-gen-full h n) 'leaf)
+(define (btn-gen-full h n) 
+  ;; TODO
+  `Leaf)
 
-;; A BSTNumber is a BTNumber with the binary search tree property
-(define-type BSTNumber BTNumber)
+(module+ test
+  (check-equal? (btn-gen-full 0 8) `Leaf)
+  (check-equal? (btn-gen-full 1 8) `(Node 8 Leaf Leaf))
+  (check-equal? (btn-gen-full 2 8) `(Node 8 (Node 8 Leaf Leaf) (Node 8 Leaf Leaf))))
 
-(: btn-bstn? (BTNumber -> Boolean))
-;; Does the bt have the binary search tree property?
-(define (btn-bstn? bt) #false)
+(: btn-contains? (BTNumber Number -> Boolean))
+;; Does the bt contain number n?
+(define (btn-contains? bt n)
+  ;; TODO
+  #f)
 
-(: bstn-contains? (BSTNumber Number -> Boolean))
-;; Does bst contain given number?
-(define (bstn-contains? bst n) #false)
+(module+ test
+  (check-equal? (btn-contains? `Leaf 8) #f)
+  (check-equal? (btn-contains? `(Node 8 Leaf Leaf) 8) #t)
+  (check-equal? (btn-contains? `(Node 5 Leaf Leaf) 8) #f)
+  (check-equal? (btn-contains? `(Node 5 Leaf (Node 8 Leaf Leaf)) 8) #t))
 
+(: btn-preorder (BTNumber -> [Listof Number]))
+;; Generate the list of numbers in bt in preorder
+(define (btn-preorder btn)
+  ;; TODO
+  '())
+
+(module+ test
+  (check-equal? (btn-preorder `Leaf) '())
+  (check-equal? (btn-preorder `(Node 5 Leaf Leaf)) '(5))
+  (check-equal? (btn-preorder `(Node 5 (Node 8 Leaf Leaf) (Node 9 Leaf Leaf)))
+                '(5 8 9)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Binary trees (parametric)
 
 ;; Write test cases for each function (before writing code!).
-;; Write type signatures.
+;; Write type signatures for each function.
 
 (define-type [BT α]
-  (U 'leaf
-     (List Number [BT α] [BT α])))
+  (U 'Leaf
+     (List 'Node α [BT α] [BT α])))
 
+;; TODO: type signature
 ;; Compute the height of a binary tree (leaf has height 0)
-(define (bt-height bt) 0)
+(define (bt-height bt) 
+  ;; TODO
+  0)
 
+(module+ test
+  #| TODO: bt-height tests |#)
+ 
 ;; Count the numbers of a binary tree
-(define (bt-count bt) 0)
+(define (bt-count bt) 
+  ;; TODO
+  0)
+
+(module+ test
+  #| TODO: bt-count tests |#)
 
 ;; Compute the mirror image of binary tree
-(define (bt-mirror bt) bt)
+(define (bt-mirror bt) 
+  ;; TODO
+  bt)
 
-;; Generate a full bt of height h containing given number n at each node
-(define (bt-gen-full h n) 'leaf)
+(module+ test
+  #| TODO: bt-mirror tests |#)
 
-;; A [BST α] is a [BT α] with the binary search tree property (according to some order)
-(define-type [BST α] [BT α])
+;; Generate a full bt of height h containing given value v at each node
+(define (bt-gen-full h v) 
+  ;; TODO
+  `Leaf)
 
-(define-type [Comparator α] (α α -> Boolean))
-(define-type [Equal α] (α α -> Boolean))
+(module+ test
+  #| TODO: bt-gen-full tests |#)
 
-;; Does the bt have the binary search tree property using given order?
-(define (bt-bst? bt <) #false)
+;; Generate the list of elements in bt in pre-order
+(define (bt-preorder bt)
+  ;; TODO
+  '())
 
-;; Does bst contain given element equal with a?
-;; ASSUME: bst has bst property wrt < and = is consistent with <.
-(define (bst-contains? bst a < =) #false)
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; TODO
-
-;; - vectors
-;; - Graphs
-;; - Hashtable (ADT)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Understanding
-#|
-
-   Give a brief English description of each of the following types or type
-   constructors:
-   - Listof
-   - List
-   - Boolean
-   - #true
-   - Pairof
-   - Real
-   - Natural
-   - Number
-   - Symbol
-   - 'leaf
-   - U
-   - ->
-
-   Subtyping: which of these are subtypes:
-   - Number <: Natural
-   - Real <: Number
-   - [Pairof Number Number] <: [Listof Number]
-   - [Pairof Number [Listof Number]] <: [Listof Number]
-   - [Real -> Number] <: [Number -> Real]
-   - [Real -> Real] <: [Number -> Number]
-   - [Number -> Number] <: [Real -> Real]
-   - [List Real Real] <: [Listof Number]
-   
-|#
+(module+ test
+  #| TODO: bt-preorder tests |#)
