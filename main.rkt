@@ -1,23 +1,17 @@
-#lang typed/racket
+#lang racket
 (provide (all-defined-out))
 
 ;; This assignment should be completed individually.
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; I pledge on my honor that I have not given or received any
 ;; unauthorized assistance on this assignment.
+;;
 ;; Name: TODO
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-
-;; Read (as needed)
-;; - https://docs.racket-lang.org/ts-guide
-;; - https://docs.racket-lang.org/ts-reference/
-
 ;; These are a series of finger-exercise programs to help you:
-;; - learn a bit of Typed Racket
+;; - learn a bit of Racket
 ;; - practice with structural recursion and type-based program design
 
 ;; This style of programming will be used throughout the course,
@@ -27,17 +21,17 @@
 ;; If you haven't, you will struggle.
 
 (module+ test
-  (require typed/rackunit))
+  (require rackunit))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Numeric functions
 
-(: fact (Natural -> Natural))
+;; Natural -> Natural
 ;; Compute n!
 (define (fact n)
   ;; TODO
-  0)
+  1)
 
 (module+ test
   (check-equal? (fact 0) 1)
@@ -45,7 +39,7 @@
   (check-equal? (fact 2) 2)
   (check-equal? (fact 5) 120))
 
-(: fib (Natural -> Natural))
+;; Natural -> Natural
 ;; Compute nth Fibonnaci number
 (define (fib n) 
   ;; TODO
@@ -67,7 +61,7 @@
 
 ;; Read up on string functions in Racket to implement these.
 
-(: longer (String String -> String))
+;; String String -> String
 ;; Select the longer of the two strings (or first if same length)
 (define (longer s1 s2)
   ;; TODO
@@ -79,7 +73,7 @@
   (check-equal? (longer "a" "bcd") "bcd")
   (check-equal? (longer "ab" "cd") "ab"))
 
-(: explode (String -> [Listof String]))
+;; String -> [Listof String]
 ;; Explode a string into a list of length-1 strings
 (define (explode s) 
   ;; TODO
@@ -90,7 +84,7 @@
   (check-equal? (explode "a") '("a"))
   (check-equal? (explode "abc") '("a" "b" "c")))
 
-(: bigrams (String -> [Listof [List String String]]))
+;; String -> [Listof [List String String]]
 ;; Compute list of bigrams (pairs of adjacent letters) in a string
 (define (bigrams s) 
   ;; TODO
@@ -107,13 +101,13 @@
 ;; Simple list functions
 
 ;; Follow this template for functions on lists of numbers where appropriate.
-#;(: lon-template ([Listof Number] ... -> ...))
+;; [Listof Number] ... -> ...
 #;(define (lon-template ls ...)
     (match ls
       ['() ...]
       [(cons n ls) (... n (lon-template ls ...) ...)]))
 
-(: length-lon ([Listof Number] -> Natural))
+;; [Listof Number] -> Natural
 ;; Compute the length of given list of numbers
 (define (length-lon ls) 
   ;; TODO
@@ -125,7 +119,7 @@
   (check-equal? (length-lon '(2)) 1)
   (check-equal? (length-lon '(1 2)) 2))
 
-(: sum ([Listof Number] -> Number))
+;; [Listof Number] -> Number
 ;; Compute the sum of given list of numbers
 (define (sum ls) 
   ;; TODO
@@ -137,7 +131,7 @@
   (check-equal? (sum '(2)) 2)
   (check-equal? (sum '(1 2)) 3))
 
-(: zip-add ([Listof Number] [Listof Number] -> [Listof Number]))
+;; [Listof Number] [Listof Number] -> [Listof Number]
 ;; Compute the pairwise sum of given list of numbers
 ;; ASSUME: lists have equal length
 (define (zip-add ls1 ls2) 
@@ -149,7 +143,7 @@
   (check-equal? (zip-add '(1) '(2)) '(3))
   (check-equal? (zip-add '(1 3) '(2 4)) '(3 7)))
 
-(: zip-lon ([Listof Number] [Listof Number] -> [Listof [List Number Number]]))
+;; [Listof Number] [Listof Number] -> [Listof [List Number Number]]
 ;; Compute the pairwise list of given list of numbers
 ;; ASSUME: lists have equal length
 (define (zip-lon ls1 ls2) 
@@ -161,19 +155,19 @@
   (check-equal? (zip-lon '(1) '(2)) '((1 2)))
   (check-equal? (zip-lon '(1 3) '(2 4)) '((1 2) (3 4))))
 
-(: max-lon ([Pairof Real [Listof Real]] -> Real))
+;; [Pairof Real [Listof Real]] -> Real
 ;; Compute max element of non-empty list of numbers
 (define (max-lon xs) 
   ;; TODO
   0)
-  
+
 (module+ test
   (check-equal? (max-lon '(1)) 1)
   (check-equal? (max-lon '(1 2)) '(2))
   (check-equal? (max-lon '(2 1)) '(2))
   (check-equal? (max-lon '(2 3 1)) '(3)))
 
-(: sort-asc ([Listof Real] -> [Listof Real]))
+;; [Listof Real] -> [Listof Real]
 ;; Sort list into ascending order
 ;; HINT: do insertion sort by writing and using the helper below
 (define (sort-asc xs) 
@@ -187,7 +181,7 @@
   (check-equal? (sort-asc '(2 1)) '(1 2))
   (check-equal? (sort-asc '(2 3 1)) '(1 2 3)))
 
-(: insert-asc (Real [Listof Real] -> [Listof Real]))
+;; Real [Listof Real] -> [Listof Real]
 ;; Insert number into sorted list
 ;; ASSUME: given list is sorted in ascending order
 (define (insert-asc n xs)
@@ -203,7 +197,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Polymorphic list functions
 
-(: minimize (∀ (α) (α -> Real) [Pairof α [Listof α]] -> α))
+;; ∀ (α) (α -> Real) [Pairof α [Listof α]] -> α
 ;; Find element that minimizes the given measure (take first if more than one)
 (define (minimize f xs) (first xs))
 
@@ -212,7 +206,7 @@
   (check-equal? (minimize string-length '("abc" "d" "efg")) "d")
   (check-equal? (minimize string-length '("abc" "d" "ef" "g")) "d"))
 
-(: sort (∀ (α) (α α -> Boolean) [Listof α] -> [Listof α]))
+;; ∀ (α) (α α -> Boolean) [Listof α] -> [Listof α]
 ;; Sort list in ascending order according to given comparison
 ;; ENSURE: result is stable
 (define (sort < xs) xs)
@@ -221,11 +215,11 @@
   (check-equal? (sort < '(1 -2 3)) '(-2 1 3))
   (check-equal? (sort string<? '("abc" "d" "efg")) '("d" "abc" "efg"))  
   (check-equal? 
-               (sort (λ ([s1 : String] [s2 : String])
-                       (< (string-length s1) (string-length s2)))
-                     '("efg" "d" "abc")) '("d" "efg" "abc")))
+   (sort (λ (s1 s2)
+           (< (string-length s1) (string-length s2)))
+         '("efg" "d" "abc")) '("d" "efg" "abc")))
 
-(: zip (∀ (α β) ([Listof α] [Listof β] -> [Listof [List α β]])))
+;; ∀ (α β) [Listof α] [Listof β] -> [Listof [List α β]]
 ;; Zip together lists into a list of lists
 ;; ASSUME: lists are the same length
 (define (zip as bs) 
@@ -238,21 +232,22 @@
   (check-equal? (zip '(1 3) '(2 4)) '((1 2) (3 4)))
   (check-equal? (zip '(1 3) '("a" "b")) '((1 "a") (3 "b"))))
 
-(: pipe (∀ (α) (Listof (α -> α)) -> (α -> α)))
+;; ∀ (α) (Listof (α -> α)) -> (α -> α)
 ;; Compose a list of functions into a single function
 ;; ((pipe (list f1 f2 f3)) x) ≡ (f1 (f2 (f3 x)))
 (define (pipe fs)
   ;; TODO
-  (λ ([x : α]) x))
+  (λ (x) x))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Peano numbers
 
 ;; Unary encoding of the natural numbers
-(define-type N (U 'Z (List 'S N)))
 
-(: nat->peano (Natural -> N))
+;; type N = 'Z | (List 'S N)
+
+;; Natural -> N
 ;; Convert natural to Peano
 (define (nat->peano n) 
   ;; TODO
@@ -264,7 +259,7 @@
   (check-equal? (nat->peano 2) '(S (S 2)))
   (check-equal? (nat->peano 3) '(S (S (S Z)))))
 
-(: peano->nat (N -> Natural))
+;; N -> Natural
 ;; Convert Peano to natural
 (define (peano->nat n) 
   ;; TODO
@@ -278,7 +273,7 @@
 
 ;; Do not use conversions to implement the following functions
 
-(: plus (N N -> N))
+;; N N -> N
 ;; Add two Peano numbers together
 (define (plus n1 n2) 
   ;; TODO
@@ -290,7 +285,7 @@
   (check-equal? (plus '(S Z) 'Z) '(S Z))
   (check-equal? (plus '(S Z) '(S Z)) '(S (S Z))))
 
-(: mult (N N -> N))
+;; N N -> N
 ;; Multiply two Peano numbers together
 (define (mult n1 n2) 
   ;; TODO
@@ -302,20 +297,20 @@
   (check-equal? (plus '(S Z) 'Z) 'Z)
   (check-equal? (plus '(S Z) '(S Z)) '(S Z)))
 
-(: iter (∀ (α) (N (α -> α) -> (α -> α))))
+;; ∀ (α) N (α -> α) -> (α -> α)
 (define (iter n f) 
   ;; TODO
-  (λ ([a : α]) a))
+  (λ (a) a))
 
 (module+ test
-  (: succ (Natural -> Natural))
+  ;; Natural -> Natural
   (define (succ n) (+ n 1))
 
   (check-equal? ((iter 'Z succ) 0) 0)
   (check-equal? ((iter '(S Z) succ) 0) 1)
   (check-equal? ((iter '(S (S Z)) succ) 0) 2)
 
-  (: neg (Boolean -> Boolean))
+  ;; Boolean -> Boolean
   (define (neg b) (not b))
 
   (check-equal? ((iter 'Z neg) #t) #t)
@@ -328,22 +323,22 @@
 
 ;; Write test cases for each function (before writing code!).
 
-(define-type BTNumber
-  (U 'Leaf
-     (List 'Node Number BTNumber BTNumber)))
+;; type BTNumber =
+;; | 'Leaf
+;; | (List 'Node Number BTNumber BTNumber)
 
 ;; Follow this template for functions on binary trees.
-#;(: btn-template (bt ... -> ...))
+;; bt ... -> ...
 #;(define (btn-template n)
     (match n
       [`Leaf ...]
       [`(Node ,n ,left ,right)
-        (... n
-             (btn-template left ...) 
-             (btn-template right ...) ...)]))
+       (... n
+            (btn-template left ...) 
+            (btn-template right ...) ...)]))
 
 
-(: btn-height (BTNumber -> Natural))
+;; BTNumber -> Natural
 ;; Compute the height of a binary tree (leaf has height 0)
 (define (btn-height bt) 
   ;; TODO
@@ -354,7 +349,7 @@
   (check-equal? (btn-height `(Node 5 Leaf Leaf)) 1)
   (check-equal? (btn-height `(Node 5 (Node 1 Leaf Leaf) Leaf)) 2))
 
-(: btn-count (BTNumber -> Natural))
+;; BTNumber -> Natural
 ;; Count the numbers of a binary tree
 (define (btn-count bt) 
   ;; TODO
@@ -365,7 +360,7 @@
   (check-equal? (btn-count `(Node 5 Leaf Leaf)) 1)
   (check-equal? (btn-count `(Node 5 (Node 1 Leaf Leaf) Leaf)) 1))
 
-(: btn-mirror (BTNumber -> BTNumber))
+;; BTNumber -> BTNumber
 ;; Compute the mirror image of binary tree
 (define (btn-mirror bt)
   ;; TODO
@@ -377,7 +372,7 @@
   (check-equal? (btn-mirror `(Node 5 (Node 1 Leaf Leaf) Leaf))
                 `(Node 5 Leaf (Node 1 Leaf Leaf))))
 
-(: btn-sum (BTNumber -> Number))
+;; BTNumber -> Number
 ;; Sum the numbers of a binary tree
 (define (btn-sum bt)
   ;; TODO
@@ -388,7 +383,7 @@
   (check-equal? (btn-sum `(Node 5 Leaf Leaf)) 5)
   (check-equal? (btn-sum `(Node 5 (Node 1 Leaf Leaf) Leaf)) 6))
 
-(: btn-gen-full (Natural Number -> BTNumber))
+;; Natural Number -> BTNumber
 ;; Generate a full bt of height h containing given number n at each node
 (define (btn-gen-full h n) 
   ;; TODO
@@ -399,7 +394,7 @@
   (check-equal? (btn-gen-full 1 8) `(Node 8 Leaf Leaf))
   (check-equal? (btn-gen-full 2 8) `(Node 8 (Node 8 Leaf Leaf) (Node 8 Leaf Leaf))))
 
-(: btn-contains? (BTNumber Number -> Boolean))
+;; BTNumber Number -> Boolean
 ;; Does the bt contain number n?
 (define (btn-contains? bt n)
   ;; TODO
@@ -411,8 +406,9 @@
   (check-equal? (btn-contains? `(Node 5 Leaf Leaf) 8) #f)
   (check-equal? (btn-contains? `(Node 5 Leaf (Node 8 Leaf Leaf)) 8) #t))
 
-(: btn-preorder (BTNumber -> [Listof Number]))
+;; BTNumber -> [Listof Number]
 ;; Generate the list of numbers in bt in preorder
+;; HINT: append is a function that might be helpful
 (define (btn-preorder btn)
   ;; TODO
   '())
@@ -422,54 +418,3 @@
   (check-equal? (btn-preorder `(Node 5 Leaf Leaf)) '(5))
   (check-equal? (btn-preorder `(Node 5 (Node 8 Leaf Leaf) (Node 9 Leaf Leaf)))
                 '(5 8 9)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Binary trees (parametric)
-
-;; Write test cases for each function (before writing code!).
-;; Write type signatures for each function.
-
-(define-type [BT α]
-  (U 'Leaf
-     (List 'Node α [BT α] [BT α])))
-
-;; TODO: type signature
-;; Compute the height of a binary tree (leaf has height 0)
-(define (bt-height bt) 
-  ;; TODO
-  0)
-
-(module+ test
-  #| TODO: bt-height tests |#)
- 
-;; Count the numbers of a binary tree
-(define (bt-count bt) 
-  ;; TODO
-  0)
-
-(module+ test
-  #| TODO: bt-count tests |#)
-
-;; Compute the mirror image of binary tree
-(define (bt-mirror bt) 
-  ;; TODO
-  bt)
-
-(module+ test
-  #| TODO: bt-mirror tests |#)
-
-;; Generate a full bt of height h containing given value v at each node
-(define (bt-gen-full h v) 
-  ;; TODO
-  `Leaf)
-
-(module+ test
-  #| TODO: bt-gen-full tests |#)
-
-;; Generate the list of elements in bt in pre-order
-(define (bt-preorder bt)
-  ;; TODO
-  '())
-
-(module+ test
-  #| TODO: bt-preorder tests |#)
