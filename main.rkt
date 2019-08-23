@@ -163,9 +163,9 @@
 
 (module+ test
   (check-equal? (max-lon '(1)) 1)
-  (check-equal? (max-lon '(1 2)) '(2))
-  (check-equal? (max-lon '(2 1)) '(2))
-  (check-equal? (max-lon '(2 3 1)) '(3)))
+  (check-equal? (max-lon '(1 2)) 2)
+  (check-equal? (max-lon '(2 1)) 2)
+  (check-equal? (max-lon '(2 3 1)) 3))
 
 ;; [Listof Real] -> [Listof Real]
 ;; Sort list into ascending order
