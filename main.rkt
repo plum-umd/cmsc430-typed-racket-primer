@@ -215,7 +215,7 @@
   (check-equal? (sort < '(1 -2 3)) '(-2 1 3))
   (check-equal? (sort string<? '("d" "abc" "efg")) '("abc" "d" "efg"))
   (check-equal?
-   (sort (λ (s1 s2)
+   (sort (lambda (s1 s2)
            (< (string-length s1) (string-length s2)))
          '("efg" "d" "abc")) '("d" "efg" "abc")))
 
