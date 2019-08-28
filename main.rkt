@@ -239,6 +239,9 @@
   ;; TODO
   (λ (x) x))
 
+(module+ test
+  (check-equal? ((pipe (list (λ (x) (+ x 2)) (λ (x) (* x 3)))) 2) 8)
+  (check-equal? ((pipe (list (λ (x) (if x 42 1)) (λ (x) (string-contains? x "Hello")))) "Hello World!") 42))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Peano numbers
