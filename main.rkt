@@ -239,6 +239,11 @@
   ;; TODO
   (λ (x) x))
 
+(module+ test
+  (check-equal? ((pipe (list number->string sqr add1)) 5) "36")
+  (check-equal? ((pipe (list number->string add1 sqr)) 5) "26")
+  (check-equal? ((pipe (list string-length number->string add1 sqr)) 5) 2))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Peano numbers
