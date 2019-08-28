@@ -297,10 +297,10 @@
   'Z)
 
 (module+ test
-  (check-equal? (plus 'Z 'Z) 'Z)
-  (check-equal? (plus 'Z '(S Z)) 'Z)
-  (check-equal? (plus '(S Z) 'Z) 'Z)
-  (check-equal? (plus '(S Z) '(S Z)) '(S Z)))
+  (check-equal? (mult 'Z 'Z) 'Z)
+  (check-equal? (mult 'Z '(S Z)) 'Z)
+  (check-equal? (mult '(S Z) 'Z) 'Z)
+  (check-equal? (mult '(S Z) '(S Z)) '(S Z)))
 
 ;; ∀ (α) N (α -> α) -> (α -> α)
 (define (iter n f) 
