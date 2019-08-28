@@ -355,7 +355,7 @@
   (check-equal? (btn-height `(Node 5 (Node 1 Leaf Leaf) Leaf)) 2))
 
 ;; BTNumber -> Natural
-;; Count the leaves of a binary tree
+;; Count the nodes of a binary tree
 (define (btn-count bt)
   ;; TODO
   0)
