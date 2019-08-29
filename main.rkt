@@ -355,15 +355,15 @@
   (check-equal? (btn-height `(Node 5 (Node 1 Leaf Leaf) Leaf)) 2))
 
 ;; BTNumber -> Natural
-;; Count the numbers of a binary tree
-(define (btn-count bt) 
+;; Count the nodes of a binary tree
+(define (btn-count bt)
   ;; TODO
   0)
 
 (module+ test
   (check-equal? (btn-count `Leaf) 0)
   (check-equal? (btn-count `(Node 5 Leaf Leaf)) 1)
-  (check-equal? (btn-count `(Node 5 (Node 1 Leaf Leaf) Leaf)) 1))
+  (check-equal? (btn-count `(Node 5 (Node 1 Leaf Leaf) Leaf)) 2))
 
 ;; BTNumber -> BTNumber
 ;; Compute the mirror image of binary tree
