@@ -41,7 +41,7 @@
 
 ;; Natural -> Natural
 ;; Compute nth Fibonnaci number
-(define (fib n) 
+(define (fib n)
   ;; TODO
   0)
 
@@ -75,7 +75,7 @@
 
 ;; String -> [Listof String]
 ;; Explode a string into a list of length-1 strings
-(define (explode s) 
+(define (explode s)
   ;; TODO
   '())
 
@@ -86,7 +86,7 @@
 
 ;; String -> [Listof [List String String]]
 ;; Compute list of bigrams (pairs of adjacent letters) in a string
-(define (bigrams s) 
+(define (bigrams s)
   ;; TODO
   '())
 
@@ -109,7 +109,7 @@
 
 ;; [Listof Number] -> Natural
 ;; Compute the length of given list of numbers
-(define (length-lon ls) 
+(define (length-lon ls)
   ;; TODO
   0)
 
@@ -121,7 +121,7 @@
 
 ;; [Listof Number] -> Number
 ;; Compute the sum of given list of numbers
-(define (sum ls) 
+(define (sum ls)
   ;; TODO
   0)
 
@@ -134,7 +134,7 @@
 ;; [Listof Number] [Listof Number] -> [Listof Number]
 ;; Compute the pairwise sum of given list of numbers
 ;; ASSUME: lists have equal length
-(define (zip-add ls1 ls2) 
+(define (zip-add ls1 ls2)
   ;; TODO
   '())
 
@@ -146,7 +146,7 @@
 ;; [Listof Number] [Listof Number] -> [Listof [List Number Number]]
 ;; Compute the pairwise list of given list of numbers
 ;; ASSUME: lists have equal length
-(define (zip-lon ls1 ls2) 
+(define (zip-lon ls1 ls2)
   ;; TODO
   '())
 
@@ -157,7 +157,7 @@
 
 ;; [Pairof Real [Listof Real]] -> Real
 ;; Compute max element of non-empty list of numbers
-(define (max-lon xs) 
+(define (max-lon xs)
   ;; TODO
   0)
 
@@ -170,7 +170,7 @@
 ;; [Listof Real] -> [Listof Real]
 ;; Sort list into ascending order
 ;; HINT: do insertion sort by writing and using the helper below
-(define (sort-asc xs) 
+(define (sort-asc xs)
   ;; TODO
   xs)
 
@@ -199,7 +199,9 @@
 
 ;; ∀ (α) (α -> Real) [Pairof α [Listof α]] -> α
 ;; Find element that minimizes the given measure (take first if more than one)
-(define (minimize f xs) (first xs))
+(define (minimize f xs)
+  ;; TODO
+  (first xs))
 
 (module+ test
   (check-equal? (minimize abs '(1 -2 3)) 1)
@@ -209,7 +211,10 @@
 ;; ∀ (α) (α α -> Boolean) [Listof α] -> [Listof α]
 ;; Sort list in ascending order according to given comparison
 ;; ENSURE: result is stable
-(define (sort < xs) xs)
+(define (sort < xs)
+  ;; TODO
+  xs)
+
 
 (module+ test
   (check-equal? (sort < '(1 -2 3)) '(-2 1 3))
@@ -222,7 +227,7 @@
 ;; ∀ (α β) [Listof α] [Listof β] -> [Listof [List α β]]
 ;; Zip together lists into a list of lists
 ;; ASSUME: lists are the same length
-(define (zip as bs) 
+(define (zip as bs)
   ;; TODO
   '())
 
@@ -254,19 +259,19 @@
 
 ;; Natural -> N
 ;; Convert natural to Peano
-(define (nat->peano n) 
+(define (nat->peano n)
   ;; TODO
   'Z)
 
 (module+ test
   (check-equal? (nat->peano 0) 'Z)
   (check-equal? (nat->peano 1) '(S Z))
-  (check-equal? (nat->peano 2) '(S (S 2)))
+  (check-equal? (nat->peano 2) '(S (S Z)))
   (check-equal? (nat->peano 3) '(S (S (S Z)))))
 
 ;; N -> Natural
 ;; Convert Peano to natural
-(define (peano->nat n) 
+(define (peano->nat n)
   ;; TODO
   0)
 
@@ -280,7 +285,7 @@
 
 ;; N N -> N
 ;; Add two Peano numbers together
-(define (plus n1 n2) 
+(define (plus n1 n2)
   ;; TODO
   'Z)
 
@@ -292,7 +297,7 @@
 
 ;; N N -> N
 ;; Multiply two Peano numbers together
-(define (mult n1 n2) 
+(define (mult n1 n2)
   ;; TODO
   'Z)
 
@@ -303,7 +308,7 @@
   (check-equal? (mult '(S Z) '(S Z)) '(S Z)))
 
 ;; ∀ (α) N (α -> α) -> (α -> α)
-(define (iter n f) 
+(define (iter n f)
   ;; TODO
   (λ (a) a))
 
@@ -339,13 +344,13 @@
       [`Leaf ...]
       [`(Node ,n ,left ,right)
        (... n
-            (btn-template left ...) 
+            (btn-template left ...)
             (btn-template right ...) ...)]))
 
 
 ;; BTNumber -> Natural
 ;; Compute the height of a binary tree (leaf has height 0)
-(define (btn-height bt) 
+(define (btn-height bt)
   ;; TODO
   0)
 
@@ -390,7 +395,7 @@
 
 ;; Natural Number -> BTNumber
 ;; Generate a full bt of height h containing given number n at each node
-(define (btn-gen-full h n) 
+(define (btn-gen-full h n)
   ;; TODO
   `Leaf)
 
