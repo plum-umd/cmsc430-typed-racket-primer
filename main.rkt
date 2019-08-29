@@ -428,3 +428,85 @@
   (check-equal? (btn-preorder `(Node 5 Leaf Leaf)) '(5))
   (check-equal? (btn-preorder `(Node 5 (Node 8 Leaf Leaf) (Node 9 Leaf Leaf)))
                 '(5 8 9)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Representing expressions
+
+;; Here is a datatype definition for representing expressions in a small
+;; functional programming language:
+
+;; type Expr =
+;; | Integer
+;; | Boolean
+;; | Variable
+;; | `(,Expr ,Expr)
+;; | `(lambda (,Variable) ,Expr)
+
+;; type Variable = Symbol
+
+#;
+(define (expr-template e)
+  (match e
+    [(? integer? i) ...]
+    [(? boolean? b) ...]
+    [(? symbol? x) ...]
+    [`(,e1 ,e2)
+     (... (expr-template e1)
+          (expr-template e2) ...)]
+    [`(lambda (,(? symbol? x)) ,e)
+     (... x (expr-template e) ...)]))
+
+
+;; Note: for each of the following functions, the order of elements
+;; and whether repetitions occur is left unspecified and up to you.
+;; The tests are written using this function to take this in to
+;; account.
+
+(module+ test
+  ;; [Listof a] [Listof a] -> Boolean
+  ;; Are the two lists equal up to re-ordering and repetition?
+  (define (list-set-equal? xs ys)
+    (equal? (list->set xs) (list->set ys)))
+
+  (check-equal? (list-set-equal? '() '()) #t)
+  (check-equal? (list-set-equal? (list 1 2) (list 2 1)) #t)
+  (check-equal? (list-set-equal? (list 1 1 2) (list 2 2 1)) #t)
+  (check-equal? (list-set-equal? (list 1 1 2) (list 2 3 2 1)) #f))
+
+
+;; Expr -> [Listof Integer]
+;; Computes a list of all integer literals that appear in the expression
+(define (expr-integers e)
+  ;; TODO
+  '())
+
+(module+ test
+  (check list-set-equal? (expr-integers 123) '(123))
+  (check list-set-equal? (expr-integers 'x) '())
+  (check list-set-equal? (expr-integers '((lambda (x) x) 123)) '(123))
+  (check list-set-equal? (expr-integers '((lambda (x) 42) 123)) '(123 42)))
+
+;; Expr -> [Listof Variable]
+;; Compute a list of all lambda-bound variables in the expression
+(define (expr-lambda-vars e)
+  ;; TODO
+  '())
+
+(module+ test
+  (check list-set-equal? (expr-lambda-vars 123) '())
+  (check list-set-equal? (expr-lambda-vars 'x) '())
+  (check list-set-equal? (expr-lambda-vars '((lambda (x) x) 123)) '(x))
+  (check list-set-equal? (expr-lambda-vars '((lambda (x) 42) 123)) '(x)))
+
+;; Expr -> [Listof Variable]
+;; Compute a list of all free variables, i.e. variables which occur outside
+;; of any lambda that binds them.
+(define (expr-free-vars e)
+  ;; TODO
+  '())
+
+(module+ test
+  (check list-set-equal? (expr-free-vars 123) '())
+  (check list-set-equal? (expr-free-vars 'x) '(x))
+  (check list-set-equal? (expr-free-vars '((lambda (x) x) 123)) '())
+  (check list-set-equal? (expr-free-vars '((lambda (x) 42) 123)) '()))
