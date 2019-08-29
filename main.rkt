@@ -102,10 +102,11 @@
 
 ;; Follow this template for functions on lists of numbers where appropriate.
 ;; [Listof Number] ... -> ...
-#;(define (lon-template ls ...)
-    (match ls
-      ['() ...]
-      [(cons n ls) (... n (lon-template ls ...) ...)]))
+#;
+(define (lon-template ls ...)
+  (match ls
+    ['() ...]
+    [(cons n ls) (... n (lon-template ls ...) ...)]))
 
 ;; [Listof Number] -> Natural
 ;; Compute the length of given list of numbers
@@ -334,18 +335,19 @@
 ;; Write test cases for each function (before writing code!).
 
 ;; type BTNumber =
-;; | 'Leaf
-;; | (List 'Node Number BTNumber BTNumber)
+;; | 'leaf
+;; | `(node ,Number ,BTNumber ,BTNumber)
 
 ;; Follow this template for functions on binary trees.
 ;; bt ... -> ...
-#;(define (btn-template n)
-    (match n
-      [`Leaf ...]
-      [`(Node ,n ,left ,right)
-       (... n
-            (btn-template left ...)
-            (btn-template right ...) ...)]))
+#;
+(define (btn-template n)
+  (match n
+    [`leaf ...]
+    [`(node ,n ,left ,right)
+     (... n
+          (btn-template left ...)
+          (btn-template right ...) ...)]))
 
 
 ;; BTNumber -> Natural
@@ -355,9 +357,9 @@
   0)
 
 (module+ test
-  (check-equal? (btn-height `Leaf) 0)
-  (check-equal? (btn-height `(Node 5 Leaf Leaf)) 1)
-  (check-equal? (btn-height `(Node 5 (Node 1 Leaf Leaf) Leaf)) 2))
+  (check-equal? (btn-height `leaf) 0)
+  (check-equal? (btn-height `(node 5 leaf leaf)) 1)
+  (check-equal? (btn-height `(node 5 (node 1 leaf leaf) leaf)) 2))
 
 ;; BTNumber -> Natural
 ;; Count the nodes of a binary tree
@@ -366,21 +368,21 @@
   0)
 
 (module+ test
-  (check-equal? (btn-count `Leaf) 0)
-  (check-equal? (btn-count `(Node 5 Leaf Leaf)) 1)
-  (check-equal? (btn-count `(Node 5 (Node 1 Leaf Leaf) Leaf)) 2))
+  (check-equal? (btn-count `leaf) 0)
+  (check-equal? (btn-count `(node 5 leaf leaf)) 1)
+  (check-equal? (btn-count `(node 5 (node 1 leaf leaf) leaf)) 2))
 
 ;; BTNumber -> BTNumber
 ;; Compute the mirror image of binary tree
 (define (btn-mirror bt)
   ;; TODO
-  `Leaf)
+  `leaf)
 
 (module+ test
-  (check-equal? (btn-mirror `Leaf) `Leaf)
-  (check-equal? (btn-mirror `(Node 5 Leaf Leaf)) `(Node 5 Leaf Leaf))
-  (check-equal? (btn-mirror `(Node 5 (Node 1 Leaf Leaf) Leaf))
-                `(Node 5 Leaf (Node 1 Leaf Leaf))))
+  (check-equal? (btn-mirror `leaf) `leaf)
+  (check-equal? (btn-mirror `(node 5 leaf leaf)) `(node 5 leaf leaf))
+  (check-equal? (btn-mirror `(node 5 (node 1 leaf leaf) leaf))
+                `(node 5 leaf (node 1 leaf leaf))))
 
 ;; BTNumber -> Number
 ;; Sum the numbers of a binary tree
@@ -389,20 +391,20 @@
   0)
 
 (module+ test
-  (check-equal? (btn-sum `Leaf) 0)
-  (check-equal? (btn-sum `(Node 5 Leaf Leaf)) 5)
-  (check-equal? (btn-sum `(Node 5 (Node 1 Leaf Leaf) Leaf)) 6))
+  (check-equal? (btn-sum `leaf) 0)
+  (check-equal? (btn-sum `(node 5 leaf leaf)) 5)
+  (check-equal? (btn-sum `(node 5 (node 1 leaf leaf) leaf)) 6))
 
 ;; Natural Number -> BTNumber
 ;; Generate a full bt of height h containing given number n at each node
 (define (btn-gen-full h n)
   ;; TODO
-  `Leaf)
+  `leaf)
 
 (module+ test
-  (check-equal? (btn-gen-full 0 8) `Leaf)
-  (check-equal? (btn-gen-full 1 8) `(Node 8 Leaf Leaf))
-  (check-equal? (btn-gen-full 2 8) `(Node 8 (Node 8 Leaf Leaf) (Node 8 Leaf Leaf))))
+  (check-equal? (btn-gen-full 0 8) `leaf)
+  (check-equal? (btn-gen-full 1 8) `(node 8 leaf leaf))
+  (check-equal? (btn-gen-full 2 8) `(node 8 (node 8 leaf leaf) (node 8 leaf leaf))))
 
 ;; BTNumber Number -> Boolean
 ;; Does the bt contain number n?
@@ -411,10 +413,10 @@
   #f)
 
 (module+ test
-  (check-equal? (btn-contains? `Leaf 8) #f)
-  (check-equal? (btn-contains? `(Node 8 Leaf Leaf) 8) #t)
-  (check-equal? (btn-contains? `(Node 5 Leaf Leaf) 8) #f)
-  (check-equal? (btn-contains? `(Node 5 Leaf (Node 8 Leaf Leaf)) 8) #t))
+  (check-equal? (btn-contains? `leaf 8) #f)
+  (check-equal? (btn-contains? `(node 8 leaf leaf) 8) #t)
+  (check-equal? (btn-contains? `(node 5 leaf leaf) 8) #f)
+  (check-equal? (btn-contains? `(node 5 leaf (node 8 leaf leaf)) 8) #t))
 
 ;; BTNumber -> [Listof Number]
 ;; Generate the list of numbers in bt in preorder
@@ -424,9 +426,9 @@
   '())
 
 (module+ test
-  (check-equal? (btn-preorder `Leaf) '())
-  (check-equal? (btn-preorder `(Node 5 Leaf Leaf)) '(5))
-  (check-equal? (btn-preorder `(Node 5 (Node 8 Leaf Leaf) (Node 9 Leaf Leaf)))
+  (check-equal? (btn-preorder `leaf) '())
+  (check-equal? (btn-preorder `(node 5 leaf leaf)) '(5))
+  (check-equal? (btn-preorder `(node 5 (node 8 leaf leaf) (node 9 leaf leaf)))
                 '(5 8 9)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
