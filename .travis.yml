@@ -1,10 +1,10 @@
-language: racket
+language: minimal
 sudo: false
 env:
   global:
     - RACKET_DIR=~/racket
   matrix:
-    - RACKET_VERSION=7.2
+    - RACKET_VERSION=7.4
 
 before_install:
   - git clone https://github.com/greghendershott/travis-racket.git
